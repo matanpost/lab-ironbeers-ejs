@@ -15,8 +15,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Add the route handlers here:
 
-app.get('/', (req, res) => {
-  res.render('index');
+app.get('/', async (req, res) => {
+  try {
+  
+    res.render('index');
+  } 
+  catch (error){
+    console.log("we have an error")
+  }
+});
+
+app.get('/beers', async (req, res) => {
+  try {
+    let allBeers = await punkAPI.getBeers();
+    console.log("these are all the beers", allBeers);
+    res.render('beers', {allBeers});
+  } 
+  catch (error){
+    console.log("we have an error")
+  }
 });
 
 app.listen(3000, () => console.log('🏃‍ on port 3000'));
