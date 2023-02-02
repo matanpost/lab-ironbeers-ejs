@@ -21,7 +21,7 @@ app.get('/', async (req, res) => {
     res.render('index');
   } 
   catch (error){
-    console.log("we have an error")
+    console.error("we have an error")
   }
 });
 
@@ -32,7 +32,7 @@ app.get('/beers', async (req, res) => {
     res.render('beers', {allBeers});
   } 
   catch (error){
-    console.log("we have an error")
+    console.error("we have an error")
   }
 });
 
